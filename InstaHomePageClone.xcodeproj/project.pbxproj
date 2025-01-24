@@ -11,6 +11,7 @@
 		2CCD9B302D435C3C00552640 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2CCD9B2F2D435C3C00552640 /* ContentView.swift */; };
 		2CCD9B322D435C3D00552640 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 2CCD9B312D435C3D00552640 /* Assets.xcassets */; };
 		2CCD9B352D435C3D00552640 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 2CCD9B342D435C3D00552640 /* Preview Assets.xcassets */; };
+		2CCD9B3C2D436B8A00552640 /* Lobster in Resources */ = {isa = PBXBuildFile; fileRef = 2CCD9B3B2D436B8A00552640 /* Lobster */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -19,6 +20,7 @@
 		2CCD9B2F2D435C3C00552640 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
 		2CCD9B312D435C3D00552640 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		2CCD9B342D435C3D00552640 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
+		2CCD9B3B2D436B8A00552640 /* Lobster */ = {isa = PBXFileReference; lastKnownFileType = folder; name = Lobster; path = ../../../../Downloads/Lobster; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -51,6 +53,7 @@
 		2CCD9B2C2D435C3C00552640 /* InstaHomePageClone */ = {
 			isa = PBXGroup;
 			children = (
+				2CCD9B3B2D436B8A00552640 /* Lobster */,
 				2CCD9B2D2D435C3C00552640 /* InstaHomePageCloneApp.swift */,
 				2CCD9B2F2D435C3C00552640 /* ContentView.swift */,
 				2CCD9B312D435C3D00552640 /* Assets.xcassets */,
@@ -125,6 +128,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				2CCD9B3C2D436B8A00552640 /* Lobster in Resources */,
 				2CCD9B352D435C3D00552640 /* Preview Assets.xcassets in Resources */,
 				2CCD9B322D435C3D00552640 /* Assets.xcassets in Resources */,
 			);
