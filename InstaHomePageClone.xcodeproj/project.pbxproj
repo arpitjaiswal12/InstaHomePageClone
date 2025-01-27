@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		2C19EAA12D47612200DBB58B /* StoryImages.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C19EAA02D47612200DBB58B /* StoryImages.swift */; };
+		2C19EAA42D4761C800DBB58B /* UserStory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C19EAA32D4761C800DBB58B /* UserStory.swift */; };
 		2CCD9B2E2D435C3C00552640 /* InstaHomePageCloneApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2CCD9B2D2D435C3C00552640 /* InstaHomePageCloneApp.swift */; };
 		2CCD9B302D435C3C00552640 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2CCD9B2F2D435C3C00552640 /* ContentView.swift */; };
 		2CCD9B322D435C3D00552640 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 2CCD9B312D435C3D00552640 /* Assets.xcassets */; };
@@ -15,6 +17,8 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		2C19EAA02D47612200DBB58B /* StoryImages.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StoryImages.swift; sourceTree = "<group>"; };
+		2C19EAA32D4761C800DBB58B /* UserStory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserStory.swift; sourceTree = "<group>"; };
 		2CCD9B2A2D435C3C00552640 /* InstaHomePageClone.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = InstaHomePageClone.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		2CCD9B2D2D435C3C00552640 /* InstaHomePageCloneApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InstaHomePageCloneApp.swift; sourceTree = "<group>"; };
 		2CCD9B2F2D435C3C00552640 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -34,6 +38,22 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		2C19EA9F2D4760FA00DBB58B /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				2C19EAA02D47612200DBB58B /* StoryImages.swift */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		2C19EAA22D4761A700DBB58B /* View */ = {
+			isa = PBXGroup;
+			children = (
+				2C19EAA32D4761C800DBB58B /* UserStory.swift */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
 		2CCD9B212D435C3C00552640 = {
 			isa = PBXGroup;
 			children = (
@@ -53,6 +73,8 @@
 		2CCD9B2C2D435C3C00552640 /* InstaHomePageClone */ = {
 			isa = PBXGroup;
 			children = (
+				2C19EAA22D4761A700DBB58B /* View */,
+				2C19EA9F2D4760FA00DBB58B /* Model */,
 				2CCD9B3B2D436B8A00552640 /* Lobster */,
 				2CCD9B2D2D435C3C00552640 /* InstaHomePageCloneApp.swift */,
 				2CCD9B2F2D435C3C00552640 /* ContentView.swift */,
@@ -143,6 +165,8 @@
 			files = (
 				2CCD9B302D435C3C00552640 /* ContentView.swift in Sources */,
 				2CCD9B2E2D435C3C00552640 /* InstaHomePageCloneApp.swift in Sources */,
+				2C19EAA42D4761C800DBB58B /* UserStory.swift in Sources */,
+				2C19EAA12D47612200DBB58B /* StoryImages.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

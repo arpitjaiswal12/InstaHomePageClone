@@ -9,9 +9,17 @@ import SwiftUI
 
 struct ContentView: View {
     
-    @State var images : [String] = ["instaImage1","instaImage2","instaImage3","instaImage4","userimg1", "instaImage5"]
-    var users = ["instaImage1": "Your Story", "instaImage2":"Jon", "instaImage3": "Zackjohn", "instaImage4" : "Zackjohn",  "instaImage5" : "Zackjohn", "userimg1" : "Zackjohn"]
-    
+    /*@State var images : [String] = ["instaImage1","instaImage2","instaImage3","instaImage4","userimg1", "instaImage5"]
+    var users = ["instaImage1": "Your Story", "instaImage2":"Jon", "instaImage3": "Zackjohn", "instaImage4" : "Zackjohn",  "instaImage5" : "Zackjohn", "userimg1" : "Zackjohn"]*/
+    var userStory = [
+        StoryImages(title: "Your Story", avatarPath: "instaImage1"),
+        StoryImages(title: "Jenny", avatarPath: "instaImage2"),
+        StoryImages(title: "Jon", avatarPath: "instaImage3"),
+        StoryImages(title: "Zackjohn", avatarPath: "instaImage4"),
+        StoryImages(title: "Joshu", avatarPath: "instaImage5"),
+        StoryImages(title: "Craig", avatarPath: "userimg1"),
+        
+    ]
     var body: some View {
         VStack {
             HStack {
@@ -47,13 +55,22 @@ struct ContentView: View {
             //.border(/*@START_MENU_TOKEN@*/Color.black/*@END_MENU_TOKEN@*/)
             
             // MARK: STORY LAYOUT
-            ScrollView (.horizontal, showsIndicators: false) {
+            /*ScrollView (.horizontal, showsIndicators: false) {
                 HStack {
                     ForEach(images, id : \.self) { key in
                         if let val = users[key] {
                             ProfileImage(imageUrl: key, userName: val)
                                 .padding(EdgeInsets(top: 0, leading: 9, bottom: 0, trailing: 10))
                         }
+                    }
+                }
+                .padding(.top,10)
+                
+            }*/
+            ScrollView (.horizontal, showsIndicators: false) {
+                HStack {
+                    ForEach(userStory, id : \.self) { obj in
+                        UserStory(imageUrl: obj.avatarPath, userName: obj.title)
                     }
                 }
                 .padding(.top,10)
@@ -95,7 +112,7 @@ struct ContentView: View {
 }
 
 
-struct ProfileImage : View {
+/*struct ProfileImage : View {
     var imageUrl : String = ""
     var userName : String = ""
     var body: some View {
@@ -114,7 +131,7 @@ struct ProfileImage : View {
                 .padding(.top, 5)
         }
     }
-}
+}*/
 
 struct FeedPost : View {
     var body : some View {
