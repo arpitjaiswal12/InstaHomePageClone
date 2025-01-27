@@ -9,7 +9,33 @@ import SwiftUI
 
 struct HomePageHeader: View {
     var body: some View {
-        Text(/*@START_MENU_TOKEN@*/"Hello, World!"/*@END_MENU_TOKEN@*/)
+        HStack {
+            Image(systemName: "camera")
+                .resizable()
+                .scaledToFill()
+                .frame(width: 30, height: 30)
+                
+            Spacer()
+            Text("Instagram")
+                .padding(.leading ,30)
+                .font(/*@START_MENU_TOKEN@*/.title/*@END_MENU_TOKEN@*/)
+                
+            Spacer()
+            Image(.IGTV)
+                .resizable()
+                .scaledToFit()
+                .frame(width: 30, height: 30)
+                
+            Image(.send)
+                .resizable()
+                .scaledToFit()
+                .frame(width: 50, height: 20)
+                
+                
+
+        }
+        .padding([.leading,.trailing],20)
+        .frame(maxWidth: .infinity )
     }
 }
 

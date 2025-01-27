@@ -8,11 +8,35 @@
 import SwiftUI
 
 struct DescriptionBox: View {
-    var body: some View {
-        Text(/*@START_MENU_TOKEN@*/"Hello, World!"/*@END_MENU_TOKEN@*/)
-    }
-}
+    @Binding var likeCount : Int
+    @Binding var isLiked : Bool
+    var description : String
 
-#Preview {
-    DescriptionBox()
+    var body : some View {
+        
+        VStack {
+            HStack {
+                Image(.instaImage5)
+                    .resizable()
+                    .scaledToFit()
+                    .frame(width: 25)
+                    .clipShape(/*@START_MENU_TOKEN@*/Circle()/*@END_MENU_TOKEN@*/)
+                
+                Text("Liked by **craig_love** and **\(likeCount) others**")
+                    .frame(maxWidth: /*@START_MENU_TOKEN@*/.infinity/*@END_MENU_TOKEN@*/, alignment: .leading)
+            }
+            .padding(.leading)
+            .frame(maxWidth: .infinity)
+            HStack{
+                Text(description)
+                    .frame(maxWidth: /*@START_MENU_TOKEN@*/.infinity/*@END_MENU_TOKEN@*/, alignment: .leading)
+                    .padding(.leading)
+            }
+            
+            
+            
+        }
+        .frame(maxWidth: .infinity)
+    }
+
 }

@@ -8,11 +8,76 @@
 import SwiftUI
 
 struct FeedBottomBar: View {
+    @Binding var isLike : Bool
+    @Binding var likeCount : Int
     var body: some View {
-        Text(/*@START_MENU_TOKEN@*/"Hello, World!"/*@END_MENU_TOKEN@*/)
+        HStack(alignment: .center){
+            HStack{
+                Button(action: {
+                   isLike.toggle()
+                    if isLike {
+                        likeCount += 1
+                    }
+                    else {
+                        likeCount -= 1
+                    }
+                }) {
+                    if isLike {
+                        Image(systemName: "heart.fill")
+                            .resizable()
+                            .scaledToFit()
+                            .foregroundStyle(Color.red)
+                            .frame(width: 24, height: 24)
+                        
+                    }
+                    else {
+                        Image("heart")
+                            .resizable()
+                            .scaledToFit()
+                            .frame(width: 24, height: 24)
+                    }
+                        
+                }
+                Image(.chat)
+                    .resizable()
+                    .scaledToFit()
+                    .frame(width: 24, height: 24)
+                Image(.send)
+                    .resizable()
+                    .scaledToFit()
+                    .frame(width: 24, height: 24)
+            }
+            //.border(Color.red, width: 3)
+            //Spacer()
+            HStack {
+                Circle()
+                    .frame(width: 6)
+                    .foregroundColor(.blue)
+                    
+                Circle()
+                    .frame(width: 6)
+                    .foregroundColor(.gray.opacity(0.3))
+                Circle()
+                    .frame(width: 6)
+                    .foregroundColor(.gray.opacity(0.3))
+            }
+            .padding(EdgeInsets(top: 0, leading: 80, bottom: 0, trailing: 120))
+            //.border(/*@START_MENU_TOKEN@*/Color.black/*@END_MENU_TOKEN@*/)
+            //Spacer()
+            HStack {
+                Image(.bookmark)
+                    .resizable()
+                    .scaledToFit()
+                    .frame(width: 24, height: 24)
+            }
+           //.border(/*@START_MENU_TOKEN@*/Color.black/*@END_MENU_TOKEN@*/)
+        }
+        //.frame(minWidth: .infinity)
+        //.border(/*@START_MENU_TOKEN@*/Color.black/*@END_MENU_TOKEN@*/)
     }
+    
 }
-
-#Preview {
-    FeedBottomBar()
-}
+//
+//#Preview {
+////    FeedBottomBar()
+//}

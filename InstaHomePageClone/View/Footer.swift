@@ -15,20 +15,18 @@ struct BottomBar: View {
                 Image($0)
                     .resizable()
                     .scaledToFit()
-                    .frame(width: 24, height: 24)
-                    .border(/*@START_MENU_TOKEN@*/Color.black/*@END_MENU_TOKEN@*/)
+                    .frame(width: 30)
                 Spacer()
                 
             }
             Image(.instaImage1)
                 .resizable()
                 .scaledToFit()
-                .frame(width: 30, height: 30)
+                .frame(width: 30)
                 .clipShape(/*@START_MENU_TOKEN@*/Circle()/*@END_MENU_TOKEN@*/)
         }
         .frame(maxWidth: /*@START_MENU_TOKEN@*/.infinity/*@END_MENU_TOKEN@*/)
         .padding([.leading,.trailing], 20)
-        .border(/*@START_MENU_TOKEN@*/Color.black/*@END_MENU_TOKEN@*/)
     }
 }
 
