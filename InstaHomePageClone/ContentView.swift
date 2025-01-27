@@ -9,8 +9,8 @@ import SwiftUI
 
 struct ContentView: View {
     
-    @State var images : [String] = ["instaImage1","instaImage2","instaImage3","instaImage4"]
-    var users = ["instaImage1": "Your Story", "instaImage2":"Jon", "instaImage3": "Zackjohn", "instaImage4" : "Zackjohn"]
+    @State var images : [String] = ["instaImage1","instaImage2","instaImage3","instaImage4","userimg1", "instaImage5"]
+    var users = ["instaImage1": "Your Story", "instaImage2":"Jon", "instaImage3": "Zackjohn", "instaImage4" : "Zackjohn",  "instaImage5" : "Zackjohn", "userimg1" : "Zackjohn"]
     
     var body: some View {
         VStack {
@@ -19,7 +19,7 @@ struct ContentView: View {
                     .resizable()
                     .scaledToFill()
                     .frame(width: 30, height: 30)
-                    .border(/*@START_MENU_TOKEN@*/Color.black/*@END_MENU_TOKEN@*/)
+                    //.border(/*@START_MENU_TOKEN@*/Color.black/*@END_MENU_TOKEN@*/)
                 Spacer()
                 Text("Instagram")
                     .padding(.leading ,30)
@@ -47,15 +47,19 @@ struct ContentView: View {
             //.border(/*@START_MENU_TOKEN@*/Color.black/*@END_MENU_TOKEN@*/)
             
             // MARK: STORY LAYOUT
-            HStack {
-                ForEach(images, id : \.self) { key in
-                    if let val = users[key] {
-                        ProfileImage(imageUrl: key, userName: val)
-                            .padding(EdgeInsets(top: 0, leading: 9, bottom: 0, trailing: 10))
+            ScrollView (.horizontal, showsIndicators: false) {
+                HStack {
+                    ForEach(images, id : \.self) { key in
+                        if let val = users[key] {
+                            ProfileImage(imageUrl: key, userName: val)
+                                .padding(EdgeInsets(top: 0, leading: 9, bottom: 0, trailing: 10))
+                        }
                     }
                 }
+                .padding(.top,10)
+                
             }
-            .frame(maxWidth: .infinity)
+           
 
             VStack {
                 FeedPost()
@@ -65,7 +69,7 @@ struct ContentView: View {
             HStack {
                 Image(.postImg1)
                     .resizable()
-                   //.scaledToFit()
+//                   .scaledToFit()
                     .frame(height: 350)
             }
             //.border(/*@START_MENU_TOKEN@*/Color.black/*@END_MENU_TOKEN@*/)
