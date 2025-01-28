@@ -11,7 +11,7 @@ struct userPost : Hashable {
     var postAvatar : String
     var username : String
     var location : String
-    var Posts : [String]
+    var posts : [String]
     var isliked : Bool
     var description : String
     var likeCount : Int
@@ -20,7 +20,7 @@ struct userPost : Hashable {
         self.postAvatar = postAvatar
         self.username = username
         self.location = location
-        self.Posts = Posts
+        self.posts = Posts
         self.isliked = isliked
         self.description = description
         self.likeCount = likeCount

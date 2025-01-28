@@ -27,7 +27,7 @@ struct DailyFeedSection: View {
         VStack{
             ScrollView {
                 ForEach(feeds, id: \.self) { obj in
-                    FeedPost(postAvatar: obj.postAvatar, username: obj.username, location: obj.location, Posts: obj.Posts, isliked: obj.isliked, description: obj.description, likeCount: obj.likeCount)
+                    FeedPost(postAvatar: obj.postAvatar, username: obj.username, location: obj.location, Posts: obj.posts, isliked: obj.isliked, description: obj.description, likeCount: obj.likeCount)
                 }
                 
             }
