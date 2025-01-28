@@ -12,10 +12,18 @@ struct FeedPost: View {
     var postAvatar : String
     var username : String
     var location : String
-    var Posts : [String]     
+    var Posts : [String]
     @State private var isliked : Bool
     var description : String
     @State private var likeCount : Int
+    
+    func disappearHeart() {
+        DispatchQueue.main.asyncAfter(deadline: .now() + 0.5) {
+            withAnimation {
+                showheart = false
+            }
+        }
+    }
     
     init(postAvatar: String, username: String, location: String, Posts: [String], isliked: Bool, description: String, likeCount : Int) {
         self.postAvatar = postAvatar
@@ -31,14 +39,14 @@ struct FeedPost: View {
     var body: some View {
         VStack {
             HStack {
-                HStack{
+                HStack {
                     Image(postAvatar)
                         .resizable()
                         .scaledToFit()
                         .frame(width: 50, height: 50)
                         .clipShape(Circle())
-                    VStack(alignment: .leading){
-                        HStack{
+                    VStack(alignment: .leading,spacing:0){
+                        HStack {
                             Text(username)
                             Image(.blueTicklRemovebgPreview)
                                 .resizable()
@@ -53,50 +61,47 @@ struct FeedPost: View {
                     Text("...")
                         .font(.largeTitle)
                         .padding(.bottom)
-                        
+                    
                 }
             }
             .padding([.leading,.trailing],20)
-
             
-            ScrollView(.horizontal, showsIndicators: false){
+            
+            ScrollView(.horizontal, showsIndicators: false) {
                 HStack {
-                    ForEach(Posts, id:\.self){ e in
+                    ForEach(Posts, id:\.self) { e in
                         Image(e)
                             .resizable()
                             .frame(width: 400, height: 400)
                             .onTapGesture(count: 2, perform: {
                                 if isliked {
                                     showheart = true
+                                    disappearHeart()
                                 }
                                 else {
                                     isliked = true
+                                    likeCount += 1
                                 }
                                 
                             })
-                            
+                        
                     }
                 }
             }
             .overlay {
-                if isliked{
+                if isliked {
+                    
                     VStack {
                         if showheart {
                             Image(systemName: "heart.fill")
                                 .resizable()
                                 .frame(width: 100, height: 90)
                                 .foregroundColor(.white)
-                                
                         }
                     }
                     .onAppear(perform: {
-                        DispatchQueue.main.asyncAfter(deadline: .now() + 0.5) {
-                                        withAnimation {
-                                            showheart = false
-                                        }
-                                    }
-                        likeCount += 1
-                        
+                        disappearHeart()
+                        showheart = true
                     })
                     
                 }
@@ -105,13 +110,8 @@ struct FeedPost: View {
                 FeedBottomBar(isLike: $isliked, likeCount: $likeCount)
             }
             VStack {
-               DescriptionBox(likeCount: $likeCount, isLiked: $isliked, description: description)
+                DescriptionBox(likeCount: $likeCount, isLiked: $isliked, description: description)
             }
-//            Button(action: {
-//               self.isliked.toggle()
-//            }) {
-//                Image(systemName: self.isliked == true ? "heart.fill" : "play.fill")
-//            }
         }
     }
 }
