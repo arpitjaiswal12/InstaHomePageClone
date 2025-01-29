@@ -10,6 +10,8 @@ import SwiftUI
 struct FeedBottomBar: View {
     @Binding var isLike : Bool
     @Binding var likeCount : Int
+    @Binding var currImage : Bool
+    var postCount : Int
     var body: some View {
         HStack(alignment: .center){
             HStack{
@@ -44,7 +46,13 @@ struct FeedBottomBar: View {
             //.border(Color.red, width: 3)
             //Spacer()
             HStack {
-                Circle()
+                ForEach(0..<postCount, id: \.self) {_ in
+                    Circle()
+                        .frame(width: 6)
+                        .foregroundColor(currImage ? .gray : .blue )
+                }
+                
+                /*Circle()
                     .frame(width: 6)
                     .foregroundColor(.blue)
                     
@@ -53,7 +61,7 @@ struct FeedBottomBar: View {
                     .foregroundColor(.gray.opacity(0.3))
                 Circle()
                     .frame(width: 6)
-                    .foregroundColor(.gray.opacity(0.3))
+                    .foregroundColor(.gray.opacity(0.3))*/
             }
             .padding(EdgeInsets(top: 0, leading: 80, bottom: 0, trailing: 120))
             //.border(/*@START_MENU_TOKEN@*/Color.black/*@END_MENU_TOKEN@*/)
@@ -72,6 +80,6 @@ struct FeedBottomBar: View {
     
 }
 //
-//#Preview {
-////    FeedBottomBar()
-//}
+#Preview {
+    FeedBottomBar(isLike: .constant(true), likeCount: .constant(102), currImage: .constant(true), postCount: 5)
+}

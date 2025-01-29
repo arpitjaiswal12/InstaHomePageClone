@@ -25,6 +25,8 @@ struct FeedPost: View {
     @State var likeCount : Int
     var description : String
     
+    @State var currImage : Bool = false
+    
     func disappearHeart() {
         DispatchQueue.main.asyncAfter(deadline: .now() + 0.5) {
             withAnimation {
@@ -93,6 +95,13 @@ struct FeedPost: View {
 //                                    likeCount += 1
 //                                }
                             })
+                            .onAppear(perform: {
+                                print("i am appeared \(post) - \(currImage)")
+                                currImage = true
+                            })
+                            .onDisappear(perform: {
+                                currImage = false
+                            })
                     }
                 }
             }
@@ -128,7 +137,7 @@ struct FeedPost: View {
                     UserDefaults.standard.storedLikes[userPostId] = value
                     isliked = value
                     print("130",value)
-                }), likeCount: $likeCount)
+                }), likeCount: $likeCount, currImage : $currImage, postCount: posts.count)
             }
             VStack {
                 DescriptionBox(likeCount: $likeCount, isLiked: $isliked, description: description)
