@@ -7,7 +7,8 @@
 
 import Foundation
 
-struct userPost : Hashable {
+struct userPost  {
+    var userPostId : String
     var postAvatar : String
     var username : String
     var location : String
@@ -16,11 +17,12 @@ struct userPost : Hashable {
     var description : String
     var likeCount : Int
     
-    init(postAvatar: String, username: String, location: String, Posts: [String], isliked: Bool, description: String, likeCount : Int) {
+    init(userPostId: String, postAvatar: String, username: String, location: String, posts: [String], isliked: Bool, description: String, likeCount: Int) {
+        self.userPostId = userPostId
         self.postAvatar = postAvatar
         self.username = username
         self.location = location
-        self.posts = Posts
+        self.posts = posts
         self.isliked = isliked
         self.description = description
         self.likeCount = likeCount
