@@ -27,7 +27,6 @@ struct ExtractedView: View {
                 HomePageHeader()
                 StorySection()
                 DailyFeedSection()
-                
             }
         }
         .padding(.top, -10)

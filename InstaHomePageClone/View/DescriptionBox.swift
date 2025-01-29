@@ -22,7 +22,7 @@ struct DescriptionBox: View {
                     .frame(width: 25)
                     .clipShape(/*@START_MENU_TOKEN@*/Circle()/*@END_MENU_TOKEN@*/)
                 
-                Text("Liked by **craig_love** and **\(likeCount) others**")
+                Text("Liked by **craig_love** and **\(isLiked ? likeCount + 1 : likeCount) others**")
                     .frame(maxWidth: /*@START_MENU_TOKEN@*/.infinity/*@END_MENU_TOKEN@*/, alignment: .leading)
             }
             .padding(.leading)

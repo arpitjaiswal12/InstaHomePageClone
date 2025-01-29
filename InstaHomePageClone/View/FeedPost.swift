@@ -8,14 +8,22 @@
 import SwiftUI
 
 struct FeedPost: View {
-    @State var showheart : Bool = true
+    @State var showheart : Bool = false
+    var userPostId : String
     var postAvatar : String
     var username : String
     var location : String
-    var Posts : [String]
-    @State private var isliked : Bool
+    var posts : [String]
+    @State private var isliked : Bool = false {
+        didSet {
+            print("IS LIKED KA DID SET CHALRA - \(userPostId) : \(isliked)")
+            UserDefaults.standard.storedLikes[userPostId] = isliked
+            showheart = true
+            disappearHeart()
+        }
+    }
+    @State var likeCount : Int
     var description : String
-    @State private var likeCount : Int
     
     func disappearHeart() {
         DispatchQueue.main.asyncAfter(deadline: .now() + 0.5) {
@@ -23,17 +31,6 @@ struct FeedPost: View {
                 showheart = false
             }
         }
-    }
-    
-    init(postAvatar: String, username: String, location: String, Posts: [String], isliked: Bool, description: String, likeCount : Int) {
-        self.postAvatar = postAvatar
-        self.username = username
-        self.location = location
-        self.Posts = Posts
-        self.isliked = isliked
-        self.description = description
-        self.likeCount = likeCount
-        
     }
     
     var body: some View {
@@ -66,48 +63,72 @@ struct FeedPost: View {
             }
             .padding([.leading,.trailing],20)
             
+            /*Button("Click Me") {
+                isliked.toggle()
+            }
+            VStack{
+                if isliked {
+                    Image(systemName: "heart.fill")
+                }
+                else {
+                    Image(systemName: "heart")
+                }
+            }*/
+            
             
             ScrollView(.horizontal, showsIndicators: false) {
                 HStack {
-                    ForEach(Posts, id:\.self) { e in
-                        Image(e)
+                    ForEach(posts, id:\.self) { post in
+                        Image(post)
                             .resizable()
                             .frame(width: 400, height: 400)
                             .onTapGesture(count: 2, perform: {
-                                if isliked {
-                                    showheart = true
-                                    disappearHeart()
-                                }
-                                else {
-                                    isliked = true
-                                    likeCount += 1
-                                }
-                                
+                                self.isliked = true
+//                                likeCount += 1
+//                                if self.isliked {
+//                                    showheart = true
+//                                    disappearHeart()
+//                                } else {
+//                                    self.isliked = true
+//                                    likeCount += 1
+//                                }
                             })
-                        
                     }
                 }
             }
             .overlay {
-                if isliked {
-                    
-                    VStack {
-                        if showheart {
-                            Image(systemName: "heart.fill")
-                                .resizable()
-                                .frame(width: 100, height: 90)
-                                .foregroundColor(.white)
-                        }
+                VStack {
+                    if showheart {
+                        Image(systemName: "heart.fill")
+                            .resizable()
+                            .frame(width: 100, height: 90)
+                            .foregroundColor(.white)
                     }
-                    .onAppear(perform: {
-                        disappearHeart()
-                        showheart = true
-                    })
-                    
                 }
+//                .onAppear(perform: {
+//                    disappearHeart()
+//                    showheart = true
+//                })
             }
+            
+            /*
+             - Parameters:
+               - get: A closure that retrieves the binding value. The closure has no
+                 parameters, and returns a value.
+              - set: A closure that sets the binding value. The closure has the
+               following parameter:
+               - newValue: The new value of the binding value.
+            public init(get: @escaping () -> Value, set: @escaping (Value) -> Void)
+             */
+            
             VStack {
-                FeedBottomBar(isLike: $isliked, likeCount: $likeCount)
+                FeedBottomBar(isLike: .init(get: {
+                    UserDefaults.standard.storedLikes[userPostId] ?? false
+                }, set: { value in
+                    UserDefaults.standard.storedLikes[userPostId] = value
+                    isliked = value
+                    print("130",value)
+                }), likeCount: $likeCount)
             }
             VStack {
                 DescriptionBox(likeCount: $likeCount, isLiked: $isliked, description: description)
@@ -117,5 +138,5 @@ struct FeedPost: View {
 }
 
 #Preview {
-    FeedPost(postAvatar: "instaImage5", username: "Craig", location: "Indore, India", Posts: ["alex-3","alex-1"], isliked: false, description: "Adventure seeker, storyteller, and life enthusiast. Embracing the chaos and celebrating the magic in every moment. Here’s to making each day count. Follow my journey.",likeCount : 150)
+    FeedPost(userPostId : "101", postAvatar: "instaImage5", username: "Craig", location: "Indore, India", posts: ["alex-3","alex-1"], likeCount : 150, description: "Adventure seeker, storyteller, and life enthusiast. Embracing the chaos and celebrating the magic in every moment. Here’s to making each day count. Follow my journey.")
 }

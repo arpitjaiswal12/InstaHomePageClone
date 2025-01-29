@@ -15,12 +15,6 @@ struct FeedBottomBar: View {
             HStack{
                 Button(action: {
                    isLike.toggle()
-                    if isLike {
-                        likeCount += 1
-                    }
-                    else {
-                        likeCount -= 1
-                    }
                 }) {
                     if isLike {
                         Image(systemName: "heart.fill")
