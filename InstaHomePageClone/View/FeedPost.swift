@@ -16,7 +16,7 @@ struct FeedPost: View {
     var posts : [String]
     @State private var isliked : Bool = false {
         didSet {
-            print("IS LIKED KA DID SET CHALRA - \(userPostId) : \(isliked)")
+            //print("IS LIKED KA DID SET CHALRA - \(userPostId) : \(isliked)")
             UserDefaults.standard.storedLikes[userPostId] = isliked
             showheart = true
             disappearHeart()
@@ -96,7 +96,7 @@ struct FeedPost: View {
 //                                }
                             })
                             .onAppear(perform: {
-                                print("i am appeared \(post) - \(currImage)")
+                                //print("i am appeared \(post) - \(currImage)")
                                 currImage = true
                             })
                             .onDisappear(perform: {
@@ -136,7 +136,7 @@ struct FeedPost: View {
                 }, set: { value in
                     UserDefaults.standard.storedLikes[userPostId] = value
                     isliked = value
-                    print("130",value)
+//                    print("130",value)
                 }), likeCount: $likeCount, currImage : $currImage, postCount: posts.count)
             }
             VStack {

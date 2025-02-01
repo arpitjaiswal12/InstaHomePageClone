@@ -11,6 +11,7 @@ import SwiftUI
 struct InstaHomePageCloneApp: App {
     var body: some Scene {
         WindowGroup {
+//            ContentView2()
             ContentView()
         }
     }

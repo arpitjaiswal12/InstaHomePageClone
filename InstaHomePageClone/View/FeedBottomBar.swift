@@ -8,6 +8,9 @@
 import SwiftUI
 
 struct FeedBottomBar: View {
+    // MARK: ScreenShot
+    @State var screenshotMaker: ScreenshotMaker?
+    
     @Binding var isLike : Bool
     @Binding var likeCount : Int
     @Binding var currImage : Bool
@@ -16,6 +19,12 @@ struct FeedBottomBar: View {
         HStack(alignment: .center){
             HStack{
                 Button(action: {
+                    if let screenshotMaker = screenshotMaker {
+                        _ = screenshotMaker.screenshot()?.saveToDocuments()
+                    } else {
+                        _ = snapshot()?.saveToDocuments()
+                    }
+
                    isLike.toggle()
                 }) {
                     if isLike {
